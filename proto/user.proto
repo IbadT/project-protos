@@ -28,7 +28,7 @@ message GetUserRequest {
 }
 
 message CreateUserRequest {
-    User user = 1;
+    string email = 1;
 }
 
 message CreateUserResponse {

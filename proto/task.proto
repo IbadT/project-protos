@@ -1,0 +1,60 @@
+syntax = "proto3";
+package task;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/IbadT/trans_history_microservice/project-protos/proto/task";
+
+service TaskService {
+    // создать задачу
+    rpc CreateTask (CreateTaskRequest) returns (CreateTaskResponse);
+    // получить задачу
+    rpc GetTask (GetTaskRequest) returns (GetTaskResponse);
+    // получить список всех задач
+    rpc ListTasks (google.protobuf.Empty) returns (ListTasksResponse);
+    // обновить задачу
+    rpc UpdateTask (UpdateTaskRequest) returns (UpdateTaskResponse);
+    // удалить задачу
+    rpc DeleteTask (DeleteTaskRequest) returns (DeleteTaskResponse);
+}
+
+message Task {
+    string id = 1;
+    string title = 2;
+}
+
+message CreateTaskRequest {
+    string title = 1;
+}
+
+message CreateTaskResponse {
+    Task task = 1;
+}
+
+message GetTaskRequest {
+    string id = 1;
+}
+
+message GetTaskResponse {
+    Task task = 1;
+}
+
+message ListTasksResponse {
+    repeated Task task = 1;
+}
+
+message UpdateTaskRequest {
+    Task task = 1;
+}
+
+message UpdateTaskResponse {
+    Task task = 1;
+}
+
+message DeleteTaskRequest {
+    string id = 1;
+}
+
+message DeleteTaskResponse {
+    string id = 1;
+}
