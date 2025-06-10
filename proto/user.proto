@@ -1,0 +1,56 @@
+syntax = "proto3";
+package user;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/IbadT/trans_history_microservice/project-protos/proto/user";
+
+service UserService {
+    // создать пользователя
+    rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+    // получить пользователя
+    rpc GetUser (GetUserRequest) returns (User);
+    // получить список всех пользователей
+    rpc ListUsers (google.protobuf.Empty) returns (ListUsersResponse);
+    // обновить пользователя
+    rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
+    // удалить пользователя
+    rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+}
+
+message User {
+    string id = 1;
+    string email = 2;
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message CreateUserRequest {
+    User user = 1;
+}
+
+message CreateUserResponse {
+    User user = 1;
+}
+
+message ListUsersResponse {
+    repeated User users = 1;
+}
+
+message UpdateUserRequest {
+    User user = 1;
+}
+
+message UpdateUserResponse {
+    User user = 1;
+}
+
+message DeleteUserRequest {
+    string id = 1;
+}
+
+message DeleteUserResponse {
+    string id = 1;
+}
