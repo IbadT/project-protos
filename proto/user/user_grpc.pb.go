@@ -34,7 +34,7 @@ type UserServiceClient interface {
 	// создать пользователя
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 	// получить пользователя
-	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*User, error)
+	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	// получить список всех пользователей
 	ListUsers(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListUsersResponse, error)
 	// обновить пользователя
@@ -61,9 +61,9 @@ func (c *userServiceClient) CreateUser(ctx context.Context, in *CreateUserReques
 	return out, nil
 }
 
-func (c *userServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*User, error) {
+func (c *userServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(User)
+	out := new(GetUserResponse)
 	err := c.cc.Invoke(ctx, UserService_GetUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -108,7 +108,7 @@ type UserServiceServer interface {
 	// создать пользователя
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 	// получить пользователя
-	GetUser(context.Context, *GetUserRequest) (*User, error)
+	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	// получить список всех пользователей
 	ListUsers(context.Context, *emptypb.Empty) (*ListUsersResponse, error)
 	// обновить пользователя
@@ -128,7 +128,7 @@ type UnimplementedUserServiceServer struct{}
 func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
-func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*User, error) {
+func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
 }
 func (UnimplementedUserServiceServer) ListUsers(context.Context, *emptypb.Empty) (*ListUsersResponse, error) {

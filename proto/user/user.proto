@@ -9,7 +9,7 @@ service UserService {
     // создать пользователя
     rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
     // получить пользователя
-    rpc GetUser (GetUserRequest) returns (User);
+    rpc GetUser (GetUserRequest) returns (GetUserResponse);
     // получить список всех пользователей
     rpc ListUsers (google.protobuf.Empty) returns (ListUsersResponse);
     // обновить пользователя
@@ -21,6 +21,10 @@ service UserService {
 message User {
     string id = 1;
     string email = 2;
+}
+
+message GetUserResponse {
+    User user = 1;
 }
 
 message GetUserRequest {
