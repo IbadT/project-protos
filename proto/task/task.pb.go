@@ -312,7 +312,8 @@ func (x *ListTasksResponse) GetTask() []*Task {
 
 type UpdateTaskRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -345,6 +346,13 @@ func (x *UpdateTaskRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateTaskRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTaskRequest) Descriptor() ([]byte, []int) {
 	return file_proto_task_task_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UpdateTaskRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *UpdateTaskRequest) GetTitle() string {
@@ -508,9 +516,10 @@ const file_proto_task_task_proto_rawDesc = "" +
 	".task.TaskR\x04task\"3\n" +
 	"\x11ListTasksResponse\x12\x1e\n" +
 	"\x04task\x18\x01 \x03(\v2\n" +
-	".task.TaskR\x04task\")\n" +
-	"\x11UpdateTaskRequest\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\"4\n" +
+	".task.TaskR\x04task\"9\n" +
+	"\x11UpdateTaskRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\"4\n" +
 	"\x12UpdateTaskResponse\x12\x1e\n" +
 	"\x04task\x18\x01 \x01(\v2\n" +
 	".task.TaskR\x04task\"#\n" +
