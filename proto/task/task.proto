@@ -11,7 +11,7 @@ service TaskService {
     // получить задачу
     rpc GetTask (GetTaskRequest) returns (GetTaskResponse);
     // получить список всех задач пользователя
-    rpc GetUserTasks (GetUserTasksRequest) returns (GetUserTasksResponse);
+    rpc ListTasksByUser (ListTasksByUserRequest) returns (ListTasksByUserResponse);
     // получить список всех задач
     rpc ListTasks (google.protobuf.Empty) returns (ListTasksResponse);
     // обновить задачу
@@ -26,11 +26,11 @@ message Task {
     string userId = 3;
 }
 
-message GetUserTasksRequest {
+message ListTasksByUserRequest {
     string userId = 1;
 }
 
-message GetUserTasksResponse {
+message ListTasksByUserResponse {
     repeated Task task = 1;
 }
 
