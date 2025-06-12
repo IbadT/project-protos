@@ -21,10 +21,12 @@ service TaskService {
 message Task {
     string id = 1;
     string title = 2;
+    string userId = 3;
 }
 
 message CreateTaskRequest {
     string title = 1;
+    string userId = 2;
 }
 
 message CreateTaskResponse {
@@ -44,7 +46,7 @@ message ListTasksResponse {
 }
 
 message UpdateTaskRequest {
-    Task task = 1;
+    string title = 1;
 }
 
 message UpdateTaskResponse {
