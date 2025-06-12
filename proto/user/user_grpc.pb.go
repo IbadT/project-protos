@@ -20,12 +20,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_CreateUser_FullMethodName       = "/user.UserService/CreateUser"
-	UserService_GetUser_FullMethodName          = "/user.UserService/GetUser"
-	UserService_GetUserWithTasks_FullMethodName = "/user.UserService/GetUserWithTasks"
-	UserService_ListUsers_FullMethodName        = "/user.UserService/ListUsers"
-	UserService_UpdateUser_FullMethodName       = "/user.UserService/UpdateUser"
-	UserService_DeleteUser_FullMethodName       = "/user.UserService/DeleteUser"
+	UserService_CreateUser_FullMethodName = "/user.UserService/CreateUser"
+	UserService_GetUser_FullMethodName    = "/user.UserService/GetUser"
+	UserService_ListUsers_FullMethodName  = "/user.UserService/ListUsers"
+	UserService_UpdateUser_FullMethodName = "/user.UserService/UpdateUser"
+	UserService_DeleteUser_FullMethodName = "/user.UserService/DeleteUser"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -36,8 +35,6 @@ type UserServiceClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 	// получить пользователя
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
-	// получить пользователя и его задачи
-	GetUserWithTasks(ctx context.Context, in *GetUserWithTasksRequest, opts ...grpc.CallOption) (*GetUserWithTasksResponse, error)
 	// получить список всех пользователей
 	ListUsers(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListUsersResponse, error)
 	// обновить пользователя
@@ -68,16 +65,6 @@ func (c *userServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opt
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetUserResponse)
 	err := c.cc.Invoke(ctx, UserService_GetUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userServiceClient) GetUserWithTasks(ctx context.Context, in *GetUserWithTasksRequest, opts ...grpc.CallOption) (*GetUserWithTasksResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUserWithTasksResponse)
-	err := c.cc.Invoke(ctx, UserService_GetUserWithTasks_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,8 +109,6 @@ type UserServiceServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 	// получить пользователя
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
-	// получить пользователя и его задачи
-	GetUserWithTasks(context.Context, *GetUserWithTasksRequest) (*GetUserWithTasksResponse, error)
 	// получить список всех пользователей
 	ListUsers(context.Context, *emptypb.Empty) (*ListUsersResponse, error)
 	// обновить пользователя
@@ -145,9 +130,6 @@ func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserReq
 }
 func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
-}
-func (UnimplementedUserServiceServer) GetUserWithTasks(context.Context, *GetUserWithTasksRequest) (*GetUserWithTasksResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserWithTasks not implemented")
 }
 func (UnimplementedUserServiceServer) ListUsers(context.Context, *emptypb.Empty) (*ListUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
@@ -211,24 +193,6 @@ func _UserService_GetUser_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).GetUser(ctx, req.(*GetUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserService_GetUserWithTasks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserWithTasksRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).GetUserWithTasks(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_GetUserWithTasks_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetUserWithTasks(ctx, req.(*GetUserWithTasksRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -301,10 +265,6 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _UserService_GetUser_Handler,
-		},
-		{
-			MethodName: "GetUserWithTasks",
-			Handler:    _UserService_GetUserWithTasks_Handler,
 		},
 		{
 			MethodName: "ListUsers",

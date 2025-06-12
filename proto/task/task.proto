@@ -10,8 +10,10 @@ service TaskService {
     rpc CreateTask (CreateTaskRequest) returns (CreateTaskResponse);
     // получить задачу
     rpc GetTask (GetTaskRequest) returns (GetTaskResponse);
+
     // получить список всех задач пользователя
     rpc ListTasksByUser (ListTasksByUserRequest) returns (ListTasksByUserResponse);
+    
     // получить список всех задач
     rpc ListTasks (google.protobuf.Empty) returns (ListTasksResponse);
     // обновить задачу
