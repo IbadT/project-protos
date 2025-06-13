@@ -33,7 +33,7 @@ message ListTasksByUserRequest {
 }
 
 message ListTasksByUserResponse {
-    repeated Task task = 1;
+    repeated Task tasks = 1;
 }
 
 message CreateTaskRequest {
@@ -54,7 +54,7 @@ message GetTaskResponse {
 }
 
 message ListTasksResponse {
-    repeated Task task = 1;
+    repeated Task tasks = 1;
 }
 
 message UpdateTaskRequest {

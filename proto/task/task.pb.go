@@ -128,7 +128,7 @@ func (x *ListTasksByUserRequest) GetUserId() string {
 
 type ListTasksByUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Task          []*Task                `protobuf:"bytes,1,rep,name=task,proto3" json:"task,omitempty"`
+	Tasks         []*Task                `protobuf:"bytes,1,rep,name=tasks,proto3" json:"tasks,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -163,9 +163,9 @@ func (*ListTasksByUserResponse) Descriptor() ([]byte, []int) {
 	return file_proto_task_task_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListTasksByUserResponse) GetTask() []*Task {
+func (x *ListTasksByUserResponse) GetTasks() []*Task {
 	if x != nil {
-		return x.Task
+		return x.Tasks
 	}
 	return nil
 }
@@ -356,7 +356,7 @@ func (x *GetTaskResponse) GetTask() *Task {
 
 type ListTasksResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Task          []*Task                `protobuf:"bytes,1,rep,name=task,proto3" json:"task,omitempty"`
+	Tasks         []*Task                `protobuf:"bytes,1,rep,name=tasks,proto3" json:"tasks,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -391,9 +391,9 @@ func (*ListTasksResponse) Descriptor() ([]byte, []int) {
 	return file_proto_task_task_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ListTasksResponse) GetTask() []*Task {
+func (x *ListTasksResponse) GetTasks() []*Task {
 	if x != nil {
-		return x.Task
+		return x.Tasks
 	}
 	return nil
 }
@@ -592,10 +592,10 @@ const file_proto_task_task_proto_rawDesc = "" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
 	"\x06userId\x18\x03 \x01(\tR\x06userId\"0\n" +
 	"\x16ListTasksByUserRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\tR\x06userId\"9\n" +
-	"\x17ListTasksByUserResponse\x12\x1e\n" +
-	"\x04task\x18\x01 \x03(\v2\n" +
-	".task.TaskR\x04task\"A\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\";\n" +
+	"\x17ListTasksByUserResponse\x12 \n" +
+	"\x05tasks\x18\x01 \x03(\v2\n" +
+	".task.TaskR\x05tasks\"A\n" +
 	"\x11CreateTaskRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\"4\n" +
@@ -606,10 +606,10 @@ const file_proto_task_task_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"1\n" +
 	"\x0fGetTaskResponse\x12\x1e\n" +
 	"\x04task\x18\x01 \x01(\v2\n" +
-	".task.TaskR\x04task\"3\n" +
-	"\x11ListTasksResponse\x12\x1e\n" +
-	"\x04task\x18\x01 \x03(\v2\n" +
-	".task.TaskR\x04task\"9\n" +
+	".task.TaskR\x04task\"5\n" +
+	"\x11ListTasksResponse\x12 \n" +
+	"\x05tasks\x18\x01 \x03(\v2\n" +
+	".task.TaskR\x05tasks\"9\n" +
 	"\x11UpdateTaskRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\"4\n" +
@@ -660,10 +660,10 @@ var file_proto_task_task_proto_goTypes = []any{
 	(*emptypb.Empty)(nil),           // 12: google.protobuf.Empty
 }
 var file_proto_task_task_proto_depIdxs = []int32{
-	0,  // 0: task.ListTasksByUserResponse.task:type_name -> task.Task
+	0,  // 0: task.ListTasksByUserResponse.tasks:type_name -> task.Task
 	0,  // 1: task.CreateTaskResponse.task:type_name -> task.Task
 	0,  // 2: task.GetTaskResponse.task:type_name -> task.Task
-	0,  // 3: task.ListTasksResponse.task:type_name -> task.Task
+	0,  // 3: task.ListTasksResponse.tasks:type_name -> task.Task
 	0,  // 4: task.UpdateTaskResponse.task:type_name -> task.Task
 	3,  // 5: task.TaskService.CreateTask:input_type -> task.CreateTaskRequest
 	5,  // 6: task.TaskService.GetTask:input_type -> task.GetTaskRequest
