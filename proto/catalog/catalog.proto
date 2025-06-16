@@ -11,6 +11,7 @@ service CataglogService {
     rpc UpdateCatalog(UpdateCatalogRequest) returns (UpdateCatalogResponse);
     rpc DeleteCatalog(DeleteCatalogRequest) returns (google.protobuf.Empty);
 }
+// Категории, фильтры, атрибуты, изображения
 
 message CreateCatalogRequest {}
 message CreateCatalogResponse {}

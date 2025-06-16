@@ -1,0 +1,59 @@
+syntax = "proto3";
+package cart;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/IbadT/trans_history_microservice/project-protos/proto/cart";
+
+service CartService {
+    rpc CreateCart (CreateCartRequest) returns (CreateCartResponse);
+    rpc GetCartById (GetCartByIdRequest) returns (GetCartByIdResponse);
+    rpc GetCarts (GetCartsRequest) returns (GetCartsResponse);
+    rpc UpdateCart (UpdateCartRequest) returns (UpdateCartResponse);
+    rpc DeleteCart (DeleteCartRequest) returns (google.protobuf.Empty);
+}
+// Добавление/удаление товаров
+
+message Cart {
+    string id = 1;
+    string title = 2;
+    int32 price = 3;
+    int32 rating = 4;
+    string description = 5;
+}
+
+message CreateCartRequest {
+    Cart cart = 1;
+}
+message CreateCartResponse {
+    Cart cart = 1;
+}
+
+message GetCartByIdRequest {
+    string id = 1;
+}
+message GetCartByIdResponse {
+    Cart cart = 1;
+}
+
+message GetCartsRequest {
+    int32 limit = 1;
+    int32 offset = 2;
+}
+message GetCartsResponse {
+    int32 limit = 1;
+    int32 offset = 2;
+    int32 total = 3;
+    repeated Cart carts = 4;
+}
+
+message UpdateCartRequest {
+    Cart cart = 1;
+}
+message UpdateCartResponse {
+    Cart cart = 1;
+}
+
+message DeleteCartRequest {
+    string id = 1;
+}
