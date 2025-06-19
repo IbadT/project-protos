@@ -1217,7 +1217,7 @@ const file_proto_product_product_proto_rawDesc = "" +
 	"\x16ListCategoriesResponse\x121\n" +
 	"\n" +
 	"categories\x18\x01 \x03(\v2\x11.product.CategoryR\n" +
-	"categories2\xc5\x05\n" +
+	"categories2\xe3\x06\n" +
 	"\x0eProductService\x12K\n" +
 	"\fListProducts\x12\x1c.product.ListProductsRequest\x1a\x1d.product.ListProductsResponse\x12N\n" +
 	"\x0eGetProductByID\x12\x1e.product.GetProductByIDRequest\x1a\x1c.product.GetCartByIdResponse\x12g\n" +
@@ -1226,8 +1226,7 @@ const file_proto_product_product_proto_rawDesc = "" +
 	"\x10UploadProductImg\x12 .product.UploadProductImgRequest\x1a!.product.UploadProductImgResponse\x12]\n" +
 	"\x12UpdateProductTitle\x12\".product.UpdateProductTitleRequest\x1a#.product.UpdateProductTitleResponse\x12]\n" +
 	"\x12UpdateProductPrice\x12\".product.UpdateProductPriceRequest\x1a#.product.UpdateProductPriceResponse\x12F\n" +
-	"\rDeleteProduct\x12\x1d.product.DeleteCatalogRequest\x1a\x16.google.protobuf.Empty2\xaf\x01\n" +
-	"\x0fCategoryService\x12Q\n" +
+	"\rDeleteProduct\x12\x1d.product.DeleteCatalogRequest\x1a\x16.google.protobuf.Empty\x12Q\n" +
 	"\x0eCreateCategory\x12\x1e.product.CreateCategoryRequest\x1a\x1f.product.CreateCategoryResponse\x12I\n" +
 	"\x0eListCategories\x12\x16.google.protobuf.Empty\x1a\x1f.product.ListCategoriesResponseBJZHgithub.com/IbadT/trans_history_microservice/project-protos/proto/productb\x06proto3"
 
@@ -1291,8 +1290,8 @@ var file_proto_product_product_proto_depIdxs = []int32{
 	11, // 18: product.ProductService.UpdateProductTitle:input_type -> product.UpdateProductTitleRequest
 	13, // 19: product.ProductService.UpdateProductPrice:input_type -> product.UpdateProductPriceRequest
 	15, // 20: product.ProductService.DeleteProduct:input_type -> product.DeleteCatalogRequest
-	17, // 21: product.CategoryService.CreateCategory:input_type -> product.CreateCategoryRequest
-	22, // 22: product.CategoryService.ListCategories:input_type -> google.protobuf.Empty
+	17, // 21: product.ProductService.CreateCategory:input_type -> product.CreateCategoryRequest
+	22, // 22: product.ProductService.ListCategories:input_type -> google.protobuf.Empty
 	6,  // 23: product.ProductService.ListProducts:output_type -> product.ListProductsResponse
 	4,  // 24: product.ProductService.GetProductByID:output_type -> product.GetCartByIdResponse
 	2,  // 25: product.ProductService.SearchProductsByFilter:output_type -> product.SearchProductByFilterResponse
@@ -1301,8 +1300,8 @@ var file_proto_product_product_proto_depIdxs = []int32{
 	12, // 28: product.ProductService.UpdateProductTitle:output_type -> product.UpdateProductTitleResponse
 	14, // 29: product.ProductService.UpdateProductPrice:output_type -> product.UpdateProductPriceResponse
 	22, // 30: product.ProductService.DeleteProduct:output_type -> google.protobuf.Empty
-	18, // 31: product.CategoryService.CreateCategory:output_type -> product.CreateCategoryResponse
-	19, // 32: product.CategoryService.ListCategories:output_type -> product.ListCategoriesResponse
+	18, // 31: product.ProductService.CreateCategory:output_type -> product.CreateCategoryResponse
+	19, // 32: product.ProductService.ListCategories:output_type -> product.ListCategoriesResponse
 	23, // [23:33] is the sub-list for method output_type
 	13, // [13:23] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
@@ -1323,7 +1322,7 @@ func file_proto_product_product_proto_init() {
 			NumEnums:      0,
 			NumMessages:   20,
 			NumExtensions: 0,
-			NumServices:   2,
+			NumServices:   1,
 		},
 		GoTypes:           file_proto_product_product_proto_goTypes,
 		DependencyIndexes: file_proto_product_product_proto_depIdxs,

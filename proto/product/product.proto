@@ -24,6 +24,9 @@ service ProductService {
     rpc UpdateProductTitle(UpdateProductTitleRequest) returns (UpdateProductTitleResponse);
     rpc UpdateProductPrice(UpdateProductPriceRequest) returns (UpdateProductPriceResponse);
     rpc DeleteProduct(DeleteCatalogRequest) returns (google.protobuf.Empty);
+
+    rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse);
+    rpc ListCategories(google.protobuf.Empty) returns (ListCategoriesResponse);
 }
 // Категории, фильтры, атрибуты, изображения
 // Category
@@ -134,10 +137,8 @@ message DeleteCatalogRequest {
 
 
 
-service CategoryService {
-    rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse);
-    rpc ListCategories(google.protobuf.Empty) returns (ListCategoriesResponse);
-}
+
+
 
 message Category {
     string id = 1;
