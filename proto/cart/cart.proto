@@ -3,6 +3,8 @@ package cart;
 
 import "google/protobuf/empty.proto";
 
+// это персональная «корзина покупок» пользователя
+
 option go_package = "github.com/IbadT/trans_history_microservice/project-protos/proto/cart";
 
 service CartService {
