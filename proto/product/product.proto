@@ -53,8 +53,8 @@ message Product {
 
 message SearchProductByFilterRequest {
     google.protobuf.StringValue title = 1;
-    google.protobuf.Int32Value minPrice = 2;
-    google.protobuf.Int32Value maxPrice = 3;
+    google.protobuf.FloatValue minPrice = 2;
+    google.protobuf.FloatValue maxPrice = 3;
     google.protobuf.StringValue categoryId = 4;
 }
 
@@ -85,9 +85,8 @@ message ListProductsResponse {
 message CreateProductRequest {
     string title = 1;
     float price = 2;
-    float currentPrice = 3;
     int32 count = 4;
-    int32 code = 5;
+    string code = 5; 
     
     string description = 6;
 
@@ -146,7 +145,7 @@ message Category {
 }
 
 message CreateCategoryRequest {
-    Category category = 1;
+    Category category = 1; // не нужно передавать ID
 }
 
 message CreateCategoryResponse {

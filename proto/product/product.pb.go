@@ -150,8 +150,8 @@ func (x *Product) GetCategoryId() string {
 type SearchProductByFilterRequest struct {
 	state         protoimpl.MessageState  `protogen:"open.v1"`
 	Title         *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
-	MinPrice      *wrapperspb.Int32Value  `protobuf:"bytes,2,opt,name=minPrice,proto3" json:"minPrice,omitempty"`
-	MaxPrice      *wrapperspb.Int32Value  `protobuf:"bytes,3,opt,name=maxPrice,proto3" json:"maxPrice,omitempty"`
+	MinPrice      *wrapperspb.FloatValue  `protobuf:"bytes,2,opt,name=minPrice,proto3" json:"minPrice,omitempty"`
+	MaxPrice      *wrapperspb.FloatValue  `protobuf:"bytes,3,opt,name=maxPrice,proto3" json:"maxPrice,omitempty"`
 	CategoryId    *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=categoryId,proto3" json:"categoryId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -194,14 +194,14 @@ func (x *SearchProductByFilterRequest) GetTitle() *wrapperspb.StringValue {
 	return nil
 }
 
-func (x *SearchProductByFilterRequest) GetMinPrice() *wrapperspb.Int32Value {
+func (x *SearchProductByFilterRequest) GetMinPrice() *wrapperspb.FloatValue {
 	if x != nil {
 		return x.MinPrice
 	}
 	return nil
 }
 
-func (x *SearchProductByFilterRequest) GetMaxPrice() *wrapperspb.Int32Value {
+func (x *SearchProductByFilterRequest) GetMaxPrice() *wrapperspb.FloatValue {
 	if x != nil {
 		return x.MaxPrice
 	}
@@ -471,9 +471,8 @@ type CreateProductRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	Price         float32                `protobuf:"fixed32,2,opt,name=price,proto3" json:"price,omitempty"`
-	CurrentPrice  float32                `protobuf:"fixed32,3,opt,name=currentPrice,proto3" json:"currentPrice,omitempty"`
 	Count         int32                  `protobuf:"varint,4,opt,name=count,proto3" json:"count,omitempty"`
-	Code          int32                  `protobuf:"varint,5,opt,name=code,proto3" json:"code,omitempty"`
+	Code          string                 `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
 	Description   string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
 	CategoryId    string                 `protobuf:"bytes,7,opt,name=categoryId,proto3" json:"categoryId,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -524,13 +523,6 @@ func (x *CreateProductRequest) GetPrice() float32 {
 	return 0
 }
 
-func (x *CreateProductRequest) GetCurrentPrice() float32 {
-	if x != nil {
-		return x.CurrentPrice
-	}
-	return 0
-}
-
 func (x *CreateProductRequest) GetCount() int32 {
 	if x != nil {
 		return x.Count
@@ -538,11 +530,11 @@ func (x *CreateProductRequest) GetCount() int32 {
 	return 0
 }
 
-func (x *CreateProductRequest) GetCode() int32 {
+func (x *CreateProductRequest) GetCode() string {
 	if x != nil {
 		return x.Code
 	}
-	return 0
+	return ""
 }
 
 func (x *CreateProductRequest) GetDescription() string {
@@ -1005,7 +997,7 @@ func (x *Category) GetCategoryName() string {
 
 type CreateCategoryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Category      *Category              `protobuf:"bytes,1,opt,name=category,proto3" json:"category,omitempty"`
+	Category      *Category              `protobuf:"bytes,1,opt,name=category,proto3" json:"category,omitempty"` // не нужно передавать ID
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1157,8 +1149,8 @@ const file_proto_product_product_proto_rawDesc = "" +
 	"categoryId\"\x82\x02\n" +
 	"\x1cSearchProductByFilterRequest\x122\n" +
 	"\x05title\x18\x01 \x01(\v2\x1c.google.protobuf.StringValueR\x05title\x127\n" +
-	"\bminPrice\x18\x02 \x01(\v2\x1b.google.protobuf.Int32ValueR\bminPrice\x127\n" +
-	"\bmaxPrice\x18\x03 \x01(\v2\x1b.google.protobuf.Int32ValueR\bmaxPrice\x12<\n" +
+	"\bminPrice\x18\x02 \x01(\v2\x1b.google.protobuf.FloatValueR\bminPrice\x127\n" +
+	"\bmaxPrice\x18\x03 \x01(\v2\x1b.google.protobuf.FloatValueR\bmaxPrice\x12<\n" +
 	"\n" +
 	"categoryId\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\n" +
 	"categoryId\"M\n" +
@@ -1175,13 +1167,12 @@ const file_proto_product_product_proto_rawDesc = "" +
 	"\x05limit\x18\x01 \x01(\x05R\x05limit\x12\x16\n" +
 	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12\x14\n" +
 	"\x05total\x18\x03 \x01(\x05R\x05total\x12,\n" +
-	"\bproducts\x18\x04 \x03(\v2\x10.product.ProductR\bproducts\"\xd2\x01\n" +
+	"\bproducts\x18\x04 \x03(\v2\x10.product.ProductR\bproducts\"\xae\x01\n" +
 	"\x14CreateProductRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x14\n" +
-	"\x05price\x18\x02 \x01(\x02R\x05price\x12\"\n" +
-	"\fcurrentPrice\x18\x03 \x01(\x02R\fcurrentPrice\x12\x14\n" +
+	"\x05price\x18\x02 \x01(\x02R\x05price\x12\x14\n" +
 	"\x05count\x18\x04 \x01(\x05R\x05count\x12\x12\n" +
-	"\x04code\x18\x05 \x01(\x05R\x04code\x12 \n" +
+	"\x04code\x18\x05 \x01(\tR\x04code\x12 \n" +
 	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x1e\n" +
 	"\n" +
 	"categoryId\x18\a \x01(\tR\n" +
@@ -1265,13 +1256,13 @@ var file_proto_product_product_proto_goTypes = []any{
 	(*CreateCategoryResponse)(nil),        // 18: product.CreateCategoryResponse
 	(*ListCategoriesResponse)(nil),        // 19: product.ListCategoriesResponse
 	(*wrapperspb.StringValue)(nil),        // 20: google.protobuf.StringValue
-	(*wrapperspb.Int32Value)(nil),         // 21: google.protobuf.Int32Value
+	(*wrapperspb.FloatValue)(nil),         // 21: google.protobuf.FloatValue
 	(*emptypb.Empty)(nil),                 // 22: google.protobuf.Empty
 }
 var file_proto_product_product_proto_depIdxs = []int32{
 	20, // 0: product.SearchProductByFilterRequest.title:type_name -> google.protobuf.StringValue
-	21, // 1: product.SearchProductByFilterRequest.minPrice:type_name -> google.protobuf.Int32Value
-	21, // 2: product.SearchProductByFilterRequest.maxPrice:type_name -> google.protobuf.Int32Value
+	21, // 1: product.SearchProductByFilterRequest.minPrice:type_name -> google.protobuf.FloatValue
+	21, // 2: product.SearchProductByFilterRequest.maxPrice:type_name -> google.protobuf.FloatValue
 	20, // 3: product.SearchProductByFilterRequest.categoryId:type_name -> google.protobuf.StringValue
 	0,  // 4: product.SearchProductByFilterResponse.products:type_name -> product.Product
 	0,  // 5: product.GetCartByIdResponse.product:type_name -> product.Product
